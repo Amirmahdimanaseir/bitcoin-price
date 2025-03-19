@@ -1,5 +1,4 @@
-# Auto detect text files and perform LF normalization
-* import requests
+import requests
 import json
 import time
 

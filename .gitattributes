@@ -33,25 +33,25 @@ def check_price_change():
         return
 
     change_percentage = ((current_price - stored_threshold) / stored_threshold) * 100
-    print(f"💰 price moment bitcoin: {current_price} dollar")
-    print(f"📊 change bitcoin prices ({stored_threshold} dollar): {round(change_percentage, 2)}%")
+    print(f" price moment bitcoin: {current_price} dollar")
+    print(f" change bitcoin prices ({stored_threshold} dollar): {round(change_percentage, 2)}%")
 
     if abs(change_percentage) >= alert_percentage:
-        print("🚨 price changed alert")
+        print(" price changed alert")
         save_threshold(current_price)
 
-        # ارسال پیام فقط زمانی که تغییر قیمت بیش از 5% باشد
-        message = f"🚀 قیمت بیت‌کوین تغییر کرد!\n🔹 قیمت جدید: {current_price} $\n📉 قیمت قبلی: {stored_threshold} $"
+        
+        message = f    !\n🔹  : {current_price} $\n : {stored_threshold} $"
         send_telegram_message(message)
 
 def send_telegram_message(message):
-    bot_token = "8199237450:AAHR6iOIFQWITKTKxSQjtR66oL5Nabbrr1w"  # توکن خودت رو جایگزین کن
-    chat_id = 840536018  # آیدی چت خودت رو جایگزین کن
+    bot_token = "8199237450:AAHR6iOIFQWITKTKxSQjtR66oL5Nabbrr1w"  
+    chat_id = 840536018  
     url = f"https://api.telegram.org/bot{bot_token}/sendMessage"
     data = {"chat_id": chat_id, "text": message}
 
     response = requests.post(url, data=data)
-    print(response.json())  # برای دیباگ
+    print(response.json())  
 
     return response.json()
 
@@ -76,7 +76,7 @@ def check_price():
 
     threshold = 3
     if abs(current_price - stored_price) >= threshold:
-        message = f"🚀 قیمت بیت‌کوین تغییر کرد!\n🔹 قیمت جدید: {current_price} $\n📉 قیمت قبلی: {stored_price} $"
+        message = f"!\n🔹  {current_price} $\: {stored_price} $"
         send_telegram_message(message)
         save_price(current_price)
 

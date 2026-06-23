@@ -1,6 +1,7 @@
 import requests
 import json
 import time
+import os
 
 THRESHOLD_FILE = "threshold.json"
 alert_percentage = 5
@@ -45,8 +46,8 @@ def check_price_change():
         send_telegram_message(message)
 
 def send_telegram_message(message):
-    bot_token = "8199237450:AAHR6iOIFQWITKTKxSQjtR66oL5Nabbrr1w"  
-    chat_id = 840536018  
+    bot_token = os.getenv("bot_token")  
+    chat_id = os.getenv("chat_id") 
     url = f"https://api.telegram.org/bot{bot_token}/sendMessage"
     data = {"chat_id": chat_id, "text": message}
 
